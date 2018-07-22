@@ -1,5 +1,7 @@
 <?php 
+	
 
+	include_once "functions.php";
 	session_start();
 	$appName = "Nk Croatia Bogdanovci";
 
@@ -11,3 +13,7 @@
 		    $pathAPP="/nk_croatia_bogdanovci_app/";
 	    break;
 }
+
+
+	$connect = new PDO("mysql:host=localhost;dbname=croatia","edunova","edunova");
+	$connect->exec("set names utf8;");
