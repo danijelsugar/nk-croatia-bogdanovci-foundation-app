@@ -8,18 +8,25 @@
   <div id="topbar-responsive" class="topbar-responsive-links">
     <div class="top-bar-right">
       <ul class="menu simple vertical medium-horizontal">
-        <li><a href="<?php echo $pathAPP; ?>index.php">Naslovna</a></li>
-        <li><a href="<?php echo $pathAPP; ?>contact.php">Kontakt</a></li>
+        <?php
+          menuItem($pathAPP, "index.php", "Naslovna");
+          menuItem($pathAPP, "contact.php", "Kontakt");
 
-        <?php if(isset($_SESSION["a"])): ?>
-          <li><a href="<?php echo $pathAPP; ?>/private/dashboard.php">Nadzorna ploča</a></li>
-        <?php endif; ?>
 
-        <?php if(isset($_SESSION["a"])): ?>
-          <li><a href="<?php echo $pathAPP; ?>logout.php">Logout</a></li>
-        <?php else: ?>
-          <li><a href="<?php echo $pathAPP; ?>login.php">Login</a></li>
-        <?php endif; ?>
+          if(isset($_SESSION["a"])):
+            menuItem($pathAPP, "private/dashboard.php", "Nadzorna ploča");
+            menuItem($pathAPP, "private/club/index.php", "Klubovi");
+            menuItem($pathAPP, "private/coach/index.php", "Treneri");
+          endif;
+        ?>
+
+        <?php 
+          if(isset($_SESSION["a"])): 
+            menuItem($pathAPP, "logout.php", "Logout");
+          else: 
+            menuItem($pathAPP, "login.php", "Login");
+          endif; 
+        ?>
             <li>
             </li>
           </ul>
