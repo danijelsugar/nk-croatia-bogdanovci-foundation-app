@@ -11,7 +11,10 @@
 		exit;
 	}
 
-	if($_POST["user"]==="dsugar" && $_POST["password"]==="d"){
+	if(($_POST["user"]==="dsugar" && $_POST["password"]==="d")
+	||
+	($_POST["user"]==="admin" && $_POST["password"]==="a")
+	){
 		$_SESSION["a"]=$_POST["user"];
 		header("location: private/dashboard.php");
 	}else {
