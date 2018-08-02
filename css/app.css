@@ -1,149 +1,145 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 body {
   font-family: 'Roboto', sans-serif;
+  position: relative;
+  //background-color: #5f91e2;
+  background-image: url("../img/pexels.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 a {
   color: #0a0a0a;
 }
+footer {
+  background-color: #20242D;
+  color: white;
+}
+footer a {
+  color: #fff;
+}
+.logo, .logo-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /*NAVBAR*/
-
-.topbar-responsive {
-  background: #2c3840;
-  padding: 1rem 1.5rem;
+.top-bar{
+  justify-content: center;
+}
+#main-menu > div {
+  width: 100%;
+  text-align: center;
+  background-color: #e6e6e6;
+}
+#main-menu ul li a {
+  font-weight: bold;
 }
 
-.topbar-responsive .topbar-responsive-logo {
-  color: #fefefe;
-  vertical-align: middle;
+/*HEADER*/
+.logo-text p {
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
 }
-
-.topbar-responsive .menu {
-  background: #2c3840;
+.logo-text span {
+  color: #000;
+  font-size: 28px;
 }
-
-.topbar-responsive .menu li:last-of-type {
-  margin-right: 0;
-}
-
-.topbar-responsive .menu a {
-  color: #fefefe;
-  transition: color 0.15s ease-in;
-}
-
-.topbar-responsive .menu a:hover {
-  color: #c6d1d8;
-}
-
-@media screen and (max-width: 39.9375em) {
-  .topbar-responsive .menu a {
-    padding: 0.875rem 0;
-  }
-}
-
-.topbar-responsive .menu .topbar-responsive-button {
-  color: #fefefe;
-  border-color: #fefefe;
-  border-radius: 5000px;
-  transition: color 0.15s ease-in, border-color 0.15s ease-in;
-}
-
-.topbar-responsive .menu .topbar-responsive-button:hover {
-  color: #c6d1d8;
-  border-color: #c6d1d8;
-}
-
-@media screen and (max-width: 39.9375em) {
-  .topbar-responsive .menu .topbar-responsive-button {
-    width: 100%;
-    margin: 0.875rem 0;
-  }
-}
-
-@media screen and (max-width: 39.9375em) {
-  .topbar-responsive {
-    padding: 0.75rem;
-  }
-  .topbar-responsive .top-bar-title {
-    position: relative;
-    width: 100%;
-  }
-  .topbar-responsive .top-bar-title span {
-    position: absolute;
-    right: 0;
-    border: 1px solid #fefefe;
-    border-radius: 5px;
-    padding: 0.25rem 0.45rem;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
-  }
-  .topbar-responsive .top-bar-title span .menu-icon {
-    margin-bottom: 4px;
-  }
-}
-
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes slideDown {
-  0% {
-    -webkit-transform: translateY(-100%);
-            transform: translateY(-100%);
-  }
-  100% {
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%);
-  }
-}
-
-@keyframes slideDown {
-  0% {
-    -webkit-transform: translateY(-100%);
-            transform: translateY(-100%);
-  }
-  100% {
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%);
-  }
-}
-
-@media screen and (max-width: 39.9375em) {
-  .topbar-responsive-links {
-    -webkit-animation-fill-mode: both;
-            animation-fill-mode: both;
-    -webkit-animation-duration: 0.5s;
-            animation-duration: 0.5s;
-    width: 100%;
-    -webkit-animation: fadeIn 1s ease-in;
-            animation: fadeIn 1s ease-in;
-  }
-}
-
 
 /*INDEX*/
 .background-img {
-	background: url("../img/cro-stadion.jpg");
+	background: url("../img/stadion.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 	width: 100%;
 	height: 100vh;
-
 }
+
+/*LOGIN*/
+.alert-box {
+  padding-right: 3.25rem;
+  width: 100%;
+}
+
+.alert-box.callout {
+  color: #fefefe;
+  font-weight: bold;
+}
+
+.alert-box.alert {
+  border: 3px solid #cc4b37;
+  border-radius: 5px;
+  background-color: rgba(204, 75, 55, 0.2);
+}
+
+.alert-box.warning {
+  border: 3px solid #ffae00;
+  border-radius: 5px;
+  background-color: rgba(255, 174, 0, 0.2);
+}
+.alert-box i {
+  border: 2px solid #fefefe;
+  border-radius: 50%;
+  padding: .3em .325em;
+  margin-right: 0.5rem;
+}
+
+.alert-box .close-button {
+  color: rgba(254, 254, 254, 0.5);
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 1rem;
+  font-weight: bold;
+}
+
+/*CONTACT*/
+.contact-text h2 {
+  font-weight: bold;
+}
+.white {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: bold;
+  color: #fff;
+}
+#googleMap {
+  margin-bottom: 30px;
+}
+.contact-info {
+  list-style-type: none;
+}
+.contact-info li a:hover {
+  color: #fff;
+}
+/*DASHBOARD*/
+.side-nav{
+  height:100vh;
+  background-color:#111;
+  opacity: 0.9;
+  padding-top:60px;
+}
+.side-nav a{
+  padding:10px 10px 10px 30px;
+  text-decoration:none;
+  font-size:22px;
+  color:#ccc;
+  transition:0.3s;
+}
+.side-nav a:hover{
+  color:#fff;
+}
+#dashboard-main{
+  padding:20px;
+}
+/*CLUB-INDEX*/
+.fa-trash {
+  color: red;
+}
+
+
