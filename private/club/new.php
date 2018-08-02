@@ -20,6 +20,7 @@ if(isset($_POST["dodaj"])){
   <?php include_once "../../template/head.php"; ?>
 </head>
 <body>
+  <?php include_once "../../template/header.php" ?>
 
   <?php include_once "../../template/navbar.php"; ?>
 
