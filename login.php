@@ -31,9 +31,12 @@
 </style>
 </head>
 <body>
+  <?php include_once "template/header.php" ?>
+  
   <?php include_once "template/navbar.php"; ?>
+  <!-- LOGIN FORM -->
   <div class="grid-container ">
-   <div class="grid-x grid-padding-x align-center">
+   <div class="grid-x grid-padding-y align-center">
     <div class="large-4 cell">
       <form method="POST" action="authorize.php">
         <div class="form-icons">
@@ -59,7 +62,39 @@
     </div>
   </div>
 </div>
-
+<!-- / LOGIN FORM -->
+<!-- ALERT -->
+<div class="grid-container">
+  <div class="grid-x">
+    <div class="cell">
+      <?php if(isset($_GET["message"])){
+        switch($_GET["message"]){
+          case "1":
+          echo "<div data-closable class='alert-box callout alert'>
+          <i class='fa fa-ban'></i> Username doesn't match our records. Please try again.
+          <button class='close-button' aria-label='Dismiss alert' type='button' data-close>
+          <span aria-hidden='true'>&CircleTimes;</span>
+          </button>
+          </div>";
+          break;
+          case "2":
+          echo "<div data-closable class='alert-box callout warning'>
+          <i class='fa fa-exclamation-triangle'></i> Please enter a username.
+          <button class='close-button' aria-label='Dismiss alert' type='button' data-close>
+          <span aria-hidden='true'>&CircleTimes;</span>
+          </button>
+          </div>";
+          break;
+          default:
+          echo "";
+          break;
+        }
+      } 
+      ?>
+    </div>
+  </div>
+</div>
+<!-- / ALERT -->
 <?php include_once "template/footer.php"; ?>
 
 <?php include_once "template/scripts.php"; ?>
