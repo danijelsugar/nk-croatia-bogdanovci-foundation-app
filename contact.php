@@ -5,14 +5,13 @@
   <?php include_once "template/head.php"; ?>
 </head>
 <body>
-
+  <?php include_once "template/header.php" ?>
 
   <?php include_once "template/navbar.php"; ?>
-  
+  <!-- GOOGLE MAPS -->
   <div class="grid-container">
-  	<h1>My map</h1>
   	<div class="grid-x">
-  		<div id="googleMap" style="width: 100%; height: 400px;"></div>
+  		<div id="googleMap" style="width: 100%; height: 600px;"></div>
   		<script>
   			//google map function
   			function myMap() {
@@ -26,6 +25,29 @@
   		</script>
   	</div>
   </div>
+  <!-- / GOOGLE MAPS -->
+
+  <!-- CONTACT INFO -->
+  <div class="grid-container">
+    <div class="grid-x">
+      <div class="cell large-6 contact-text">
+        <h1>Kontakti</h1>
+        <p class="white">Nogometni klub Croatia Bogdanovci mozete kontaktirati svakim radnim danom, te na dan svake domaće utakmice.</p>
+        <p><strong>Nogometni klub Croatia Bogdanovci je amaterski sportski klub.</strong></p>
+        <p>Matije Gupca bb, 32000 Vukovar</p>
+      </div> 
+      <div class="cell large-6 ">
+        <h4>Opće informacije</h4>
+          <ul class="contact-info">
+            <li><strong>Web:</strong> <a href="#">www.koasd</a></li>
+            <li><strong>Facebook:</strong> <a href="https://www.facebook.com/nkcroatiabogdanovci1947/">https://www.facebook.com/nkcroatiabogdanovci1947</a></li>
+            <li><strong>Mail:</strong> croatia.bogdanovci@yahoo.com</li>
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+  <!-- / CONTACT INFO -->
 
   <?php include_once "template/footer.php"; ?>
 
