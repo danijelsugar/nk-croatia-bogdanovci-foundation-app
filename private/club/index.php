@@ -10,6 +10,7 @@ if(!isset($_SESSION["a"])){
   <?php include_once "../../template/head.php"; ?>
 </head>
 <body>
+  <?php include_once "../../template/header.php" ?>
 
   <?php include_once "../../template/navbar.php"; ?>
 
@@ -20,38 +21,40 @@ if(!isset($_SESSION["a"])){
   ?>
 
   <div class="grid-container">
-    <h1>Klubovi</h1>
-    <div class="grid-x grid-margin-x grid-padding-x"></div>
-    <a href="new.php" class="button expanded">Dodaj novi klub</a>
-    <table>
-      <thead>
-        <th>Pozicija</th>
-        <th>Naziv</th>
-        <th>Broj Bodova</th>
-        <th>Zabijenih golova</th>
-        <th>Primljenih golova</th>
-        <th>Akcija</th>
-      </thead>
-      <tbody>
-        <?php foreach($result as $row): ?>
-          <tr>
-            <td><?php echo $row->pozicija; ?></td>
-            <td><?php echo $row->naziv; ?></td>
-            <td><?php echo $row->brojbodova; ?></td>
-            <td><?php echo $row->zabijenihgolova; ?></td>
-            <td><?php echo $row->primljenihgolova; ?></td>
-            <td>
-              <a href="update.php?sifra=<?php echo $row->sifra; ?>">
-                <i class="fas fa-edit fa-2x"></i>
-              </a>
-              <a href="delete.php?sifra=<?php echo $row->sifra; ?>">
-                <i class="fas fa-trash fa-2x"></i>
-              </a>
-            </td>
-          </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+    <div class="grid-x">
+      <h3>Klubovi</h3>
+      <hr>
+      <a href="new.php" class="button expanded">Dodaj novi klub</a>
+      <table class="stack">
+        <thead>
+          <th>Pozicija</th>
+          <th>Naziv</th>
+          <th>Broj Bodova</th>
+          <th>Zabijenih golova</th>
+          <th>Primljenih golova</th>
+          <th>Akcija</th>
+        </thead>
+        <tbody>
+          <?php foreach($result as $row): ?>
+            <tr>
+              <td><?php echo $row->pozicija; ?></td>
+              <td><?php echo $row->naziv; ?></td>
+              <td><?php echo $row->brojbodova; ?></td>
+              <td><?php echo $row->zabijenihgolova; ?></td>
+              <td><?php echo $row->primljenihgolova; ?></td>
+              <td>
+                <a href="update.php?sifra=<?php echo $row->sifra; ?>">
+                  <i class="fas fa-edit fa-2x"></i>
+                </a>
+                <a href="delete.php?sifra=<?php echo $row->sifra; ?>">
+                  <i class="fas fa-trash fa-2x"></i>
+                </a>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <?php include_once "../../template/footer.php"; ?>

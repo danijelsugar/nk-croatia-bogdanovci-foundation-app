@@ -10,7 +10,8 @@ if(!isset($_SESSION["a"])){
   <?php include_once "../../template/head.php"; ?>
 </head>
 <body>
-
+  <?php include_once "../../template/header.php" ?>
+  
   <?php include_once "../../template/navbar.php"; ?>
 
   <?php
@@ -20,38 +21,40 @@ if(!isset($_SESSION["a"])){
   ?>
 
   <div class="grid-container">
-    <h1>Treneri</h1>
-    <div class="grid-x grid-margin-x grid-padding-x"></div>
-    <a href="new.php" class="button expanded">Dodaj novi klub</a>
-    <table>
-      <thead>
-        <th>Ime</th>
-        <th>Prezime</th>
-        <th>Oib</th>
-        <th>Broj telefona</th>
-        <th>Broj licence</th>
-        <th>Akcija</th>
-      </thead>
-      <tbody>
-        <?php foreach($result as $row): ?>
-          <tr>
-            <td><?php echo $row->ime ?></td>
-            <td><?php echo $row->prezime ?></td>
-            <td><?php echo $row->oib ?></td>
-            <td><?php echo $row->brojtelefona ?></td>
-            <td><?php echo $row->brojlicence ?></td>
-            <td>
-              <a href="update.php?sifra=<?php echo $row->sifra; ?>">
-                <i class="fas fa-edit fa-2x"></i>
-              </a>
-              <a href="delete.php?sifra=<?php echo $row->sifra; ?>">
-                <i class="fas fa-trash fa-2x"></i>
-              </a>
-            </td>
-          </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+    <div class="grid-x">
+      <h3>Treneri</h3>
+      <hr />
+      <a href="new.php" class="button expanded">Dodaj novi klub</a>
+      <table class="stack">
+        <thead>
+          <th>Ime</th>
+          <th>Prezime</th>
+          <th>Oib</th>
+          <th>Broj telefona</th>
+          <th>Broj licence</th>
+          <th>Akcija</th>
+        </thead>
+        <tbody>
+          <?php foreach($result as $row): ?>
+            <tr>
+              <td><?php echo $row->ime ?></td>
+              <td><?php echo $row->prezime ?></td>
+              <td><?php echo $row->oib ?></td>
+              <td><?php echo $row->brojtelefona ?></td>
+              <td><?php echo $row->brojlicence ?></td>
+              <td>
+                <a href="update.php?sifra=<?php echo $row->sifra; ?>">
+                  <i class="fas fa-edit fa-2x"></i>
+                </a>
+                <a href="delete.php?sifra=<?php echo $row->sifra; ?>">
+                  <i class="fas fa-trash fa-2x"></i>
+                </a>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <?php include_once "../../template/footer.php"; ?>
