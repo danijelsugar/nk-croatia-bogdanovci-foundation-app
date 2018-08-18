@@ -2,10 +2,9 @@
 body {
   font-family: 'Roboto', sans-serif;
   position: relative;
-  //background-color: #5f91e2;
-  background-image: url("../img/pexels.jpeg");
-  background-repeat: no-repeat;
+  background-image: url("../img/blue-white.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
 }
 a {
   color: #0a0a0a;
@@ -32,15 +31,46 @@ footer a {
   text-align: center;
   background-color: #e6e6e6;
 }
-#main-menu ul li a {
+.link{
+  display: inline-block;
+  padding: 7px 10px;
+  font-size: 18px;
+  color: #0a393d;
+  position: relative;
+  transition: all 0.3s ease 0s;
+}
+.link:hover{ color: #0a393d; }
+.link:before,
+.link:after{
+  content: "";
+  width: 0;
+  height: 2px;
+  background: #2b9eb3;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transition: all 0.3s ease 0s;
+}
+.link:after{
+  top: auto;
+  bottom: 0;
+}
+.link:hover:before,
+.link:hover:after{
+  width: 100%;
+  left: 0;
+}
+@media only screen and (max-width: 767px){
+  .link{ margin-bottom: 20px; }
+}
+.active {
   font-weight: bold;
 }
-
 /*HEADER*/
 .logo-text p {
   font-size: 32px;
   font-weight: bold;
-  color: #fff;
+  color: #0000ff;
 }
 .logo-text span {
   color: #000;
@@ -106,7 +136,7 @@ footer a {
   font-size: 18px;
   line-height: 26px;
   font-weight: bold;
-  color: #fff;
+  color: #0000ff;
 }
 #googleMap {
   margin-bottom: 30px;
@@ -115,13 +145,22 @@ footer a {
   list-style-type: none;
 }
 .contact-info li a:hover {
-  color: #fff;
+  color: #000;
+  background-color: #e6e6e6;
 }
-/*DASHBOARD*/
+/*
+  PRIVATE
+*/
+.button {
+  margin: 0 0 0 0;
+}
+.callout {
+  margin: 0 0 0 0;
+}
+/*Sidebar*/
 .side-nav{
-  height:100vh;
-  background-color:#111;
-  opacity: 0.9;
+  height: 100%;
+  background-color:#20242D;
   padding-top:60px;
 }
 .side-nav a{
@@ -136,6 +175,9 @@ footer a {
 }
 #dashboard-main{
   padding:20px;
+}
+#side-menu > ul > li{
+  padding: 0.7rem 1rem;
 }
 /*CLUB-INDEX*/
 .fa-trash {
