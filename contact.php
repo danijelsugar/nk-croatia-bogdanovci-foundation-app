@@ -5,14 +5,15 @@
   <?php include_once "template/head.php"; ?>
 </head>
 <body>
-  <?php include_once "template/header.php" ?>
 
-  <?php include_once "template/navbar.php"; ?>
-  <!-- GOOGLE MAPS -->
+
   <div class="grid-container">
-  	<div class="grid-x">
-  		<div id="googleMap" style="width: 100%; height: 600px;"></div>
-  		<script>
+    <?php include_once "template/header.php" ?>
+    <?php include_once "template/navbar.php"; ?>
+    <!-- GOOGLE MAPS -->
+    <div class="grid-x">
+      <div id="googleMap" style="width: 100%; height: 600px;"></div>
+      <script>
   			//google map function
   			function myMap() {
   				var mapCenter = new google.maps.LatLng(45.342800,18.928486);
@@ -24,11 +25,9 @@
   			}
   		</script>
   	</div>
-  </div>
-  <!-- / GOOGLE MAPS -->
+    <!-- / GOOGLE MAPS -->
 
-  <!-- CONTACT INFO -->
-  <div class="grid-container">
+    <!-- CONTACT INFO -->
     <div class="grid-x">
       <div class="cell large-6 contact-text">
         <h1>Kontakti</h1>
@@ -38,12 +37,11 @@
       </div> 
       <div class="cell large-6 ">
         <h4>Opće informacije</h4>
-          <ul class="contact-info">
-            <li><strong>Web:</strong> <a href="#">www.koasd</a></li>
-            <li><strong>Facebook:</strong> <a href="https://www.facebook.com/nkcroatiabogdanovci1947/">https://www.facebook.com/nkcroatiabogdanovci1947</a></li>
-            <li><strong>Mail:</strong> croatia.bogdanovci@yahoo.com</li>
-          </ul>
-        
+        <ul class="contact-info">
+          <li><strong>Web:</strong> <a href="#">www.koasd</a></li>
+          <li><strong>Facebook:</strong> <a href="https://www.facebook.com/nkcroatiabogdanovci1947/">https://www.facebook.com/nkcroatiabogdanovci1947</a></li>
+          <li><strong>Mail:</strong> croatia.bogdanovci@yahoo.com</li>
+        </ul>
       </div>
     </div>
   </div>
