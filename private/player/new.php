@@ -6,7 +6,7 @@ if(!isset($_SESSION["a"])){
 
 if(isset($_POST["dodaj"])){
   $query = $connect->prepare("insert into igrac (ime,prezime,oib,brojtelefona,brojregistracije) values
-                            (:ime,:prezime,:oib,:brojTelefona,:brojRegistracije)");
+    (:ime,:prezime,:oib,:brojTelefona,:brojRegistracije)");
   unset($_POST["dodaj"]);
   $query->execute($_POST);
   header("location: index.php");
@@ -20,13 +20,14 @@ if(isset($_POST["dodaj"])){
   <?php include_once "../../template/head.php"; ?>
 </head>
 <body>
-  <?php include_once "../../template/header.php" ?>
+  <?php// include_once "../../template/header.php" ?>
 
-  <?php include_once "../../template/navbar.php"; ?>
-
-  <div class="grid-container">
+  <?php// include_once "../../template/navbar.php"; ?>
+  
+  <div class="grid-container full">
     <div class="grid-x">
-      <div class="cell large-12 ">
+      <?php include_once "../../template/sidebar.php"; ?>
+      <div class="cell large-10 medium-9">
         <form class="callout text-center" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
           <div class="floated-label">
             <label for="naziv">Ime</label>
@@ -45,7 +46,7 @@ if(isset($_POST["dodaj"])){
             <input autocomplete="off" type="text" id="brojTelefona" name="brojTelefona" >
           </div>
           <div class="floated-label">
-            <label for="upisnina">Broj licence</label>
+            <label for="upisnina">Broj registracije</label>
             <input autocomplete="off" type="text" id="brojRegistracije" name="brojRegistracije" >
           </div>
           <input class="button expanded" type="submit" name="dodaj" value="Dodaj novi klub">
@@ -54,8 +55,6 @@ if(isset($_POST["dodaj"])){
     </div>
   </div>
 
-    <?php include_once "../../template/footer.php"; ?>
-
-    <?php include_once "../../template/scripts.php"; ?>
-  </body>
-  </html>
+  <?php include_once "../../template/scripts.php"; ?>
+</body>
+</html>

@@ -20,15 +20,11 @@ if(isset($_POST["dodaj"])){
   <?php include_once "../../template/head.php"; ?>
 </head>
 <body>
-  <?php include_once "../../template/header.php" ?>
 
-  <?php include_once "../../template/navbar.php"; ?>
-
-  
-
-  <div class="grid-container">
+  <div class="grid-container full">
     <div class="grid-x">
-      <div class="cell large-12 ">
+      <?php include_once "../../template/sidebar.php"; ?>
+      <div class="cell large-10 medium-9">
         <form class="callout text-center" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
           <div class="floated-label">
             <label for="naziv">Pozicija</label>
@@ -55,8 +51,6 @@ if(isset($_POST["dodaj"])){
       </div>
     </div>
   </div>
-
-  <?php include_once "../../template/footer.php"; ?>
 
   <?php include_once "../../template/scripts.php"; ?>
 </body>

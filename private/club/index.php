@@ -10,9 +10,7 @@ if(!isset($_SESSION["a"])){
   <?php include_once "../../template/head.php"; ?>
 </head>
 <body>
-  <?php include_once "../../template/header.php" ?>
 
-  <?php include_once "../../template/navbar.php"; ?>
 
   <?php
   $query = $connect->prepare("select * from klub order by brojbodova desc;");
@@ -20,12 +18,12 @@ if(!isset($_SESSION["a"])){
   $result = $query->fetchAll(PDO::FETCH_OBJ);
   ?>
 
-  <div class="grid-container">
+  <div class="grid-container full">
     <div class="grid-x">
-      <h3>Klubovi</h3>
-      <hr>
-      <a href="new.php" class="button expanded">Dodaj novi klub</a>
-      <table class="stack">
+     <?php include_once "../../template/sidebar.php"; ?>
+     <div class="cell large-10 medium-9">
+       <a href="new.php" class="button expanded">Dodaj novi klub</a>
+       <table class="responsive-card-table unstriped">
         <thead>
           <th>Pozicija</th>
           <th>Naziv</th>
@@ -37,12 +35,12 @@ if(!isset($_SESSION["a"])){
         <tbody>
           <?php foreach($result as $row): ?>
             <tr>
-              <td><?php echo $row->pozicija; ?></td>
-              <td><?php echo $row->naziv; ?></td>
-              <td><?php echo $row->brojbodova; ?></td>
-              <td><?php echo $row->zabijenihgolova; ?></td>
-              <td><?php echo $row->primljenihgolova; ?></td>
-              <td>
+              <td data-label="Pozicija"><?php echo $row->pozicija; ?></td>
+              <td data-label="Naziv"><?php echo $row->naziv; ?></td>
+              <td data-label="Broj bodova"><?php echo $row->brojbodova; ?></td>
+              <td data-label="Zabijenih golova"><?php echo $row->zabijenihgolova; ?></td>
+              <td data-label="Primljenih golova"><?php echo $row->primljenihgolova; ?></td>
+              <td data-label="Akcija">
                 <a href="update.php?sifra=<?php echo $row->sifra; ?>">
                   <i class="fas fa-edit fa-2x"></i>
                 </a>
@@ -56,9 +54,9 @@ if(!isset($_SESSION["a"])){
       </table>
     </div>
   </div>
+</div>
 
-  <?php include_once "../../template/footer.php"; ?>
 
-  <?php include_once "../../template/scripts.php"; ?>
+<?php include_once "../../template/scripts.php"; ?>
 </body>
 </html>
