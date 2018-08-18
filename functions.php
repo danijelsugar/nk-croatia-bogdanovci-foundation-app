@@ -1,5 +1,9 @@
 <?php 
-
+/*
+	==============================
+		Function for navbar items
+	==============================
+*/
 function menuItem($pathAPP, $currentPage, $label){
         ?>
         <li class="nav-item">
@@ -7,7 +11,7 @@ function menuItem($pathAPP, $currentPage, $label){
         if ($pathAPP . $currentPage == $_SERVER["PHP_SELF"]){
           echo "active";
         }
-        ?>" href="<?php echo $pathAPP . $currentPage; ?>"><?php echo $label; ?></a>
+        ?> link" href="<?php echo $pathAPP . $currentPage; ?>"><?php echo $label; ?></a>
         </li>
         <?php
 }
