@@ -57,6 +57,7 @@ if(isset($_POST["promjeni"])){
           </div>
           <input type="hidden" name="sifra" value="<?php echo $o->sifra ?>" />
           <input class="button expanded" type="submit" name="promjeni" value="Promjeni">
+          <a class="alert button expanded" href="index.php">Nazad</a>
         </form>
       </div>
     </div>

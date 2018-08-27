@@ -47,6 +47,7 @@ if(isset($_POST["dodaj"])){
             <input autocomplete="off" type="number" min="1" max="10000" id="primljenihGolova" name="primljenihGolova" >
           </div>
           <input class="button expanded" type="submit" name="dodaj" value="Dodaj novi klub">
+          <a class="alert button expanded" href="index.php">Nazad</a>
         </form>
       </div>
     </div>

@@ -1,4 +1,4 @@
-<?php include_once "../../configuration.php"; 
+<?php include_once "../../configuration.php";
 if(!isset($_SESSION["a"])){
   header("location: " . $pathAPP . "logout.php");
 }
@@ -49,7 +49,8 @@ if(isset($_POST["dodaj"])){
             <label for="upisnina">Broj registracije</label>
             <input autocomplete="off" type="text" id="brojRegistracije" name="brojRegistracije" >
           </div>
-          <input class="button expanded" type="submit" name="dodaj" value="Dodaj novi klub">
+          <input class="button expanded" type="submit" name="dodaj" value="Dodaj novog igrača">
+          <a class="alert button expanded" href="index.php">Nazad</a>
         </form>
       </div>
     </div>

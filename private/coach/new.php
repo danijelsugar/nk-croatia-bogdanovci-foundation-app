@@ -46,7 +46,8 @@ if(isset($_POST["dodaj"])){
             <label for="upisnina">Broj licence</label>
             <input autocomplete="off" type="text" id="brojLicence" name="brojLicence" >
           </div>
-          <input class="button expanded" type="submit" name="dodaj" value="Dodaj novi klub">
+          <input class="button expanded" type="submit" name="dodaj" value="Dodaj novog trenera">
+          <a class="alert button expanded" href="index.php">Nazad</a>
         </form>
       </div>
     </div>
