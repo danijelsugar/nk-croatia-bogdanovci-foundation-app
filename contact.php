@@ -26,12 +26,11 @@
   		</script>
   	</div>
     <!-- / GOOGLE MAPS -->
-
     <!-- CONTACT INFO -->
     <div class="grid-x">
       <div class="cell large-6 contact-text">
         <h1>Kontakti</h1>
-        <p class="white">Nogometni klub Croatia Bogdanovci mozete kontaktirati svakim radnim danom, te na dan svake domaće utakmice.</p>
+        <p class="blue">Nogometni klub Croatia Bogdanovci mozete kontaktirati svakim radnim danom, te na dan svake domaće utakmice.</p>
         <p><strong>Nogometni klub Croatia Bogdanovci je amaterski sportski klub.</strong></p>
         <p>Matije Gupca bb, 32000 Vukovar</p>
       </div> 
@@ -50,5 +49,9 @@
   <?php include_once "template/footer.php"; ?>
 
   <?php include_once "template/scripts.php"; ?>
+  <!-- Google maps -->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2-OWWKXPagI2nZVi-uF7msqbfi0aYtqw&callback=myMap">
+</script>
 </body>
 </html>
