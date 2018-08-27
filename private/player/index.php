@@ -51,7 +51,7 @@ if(!isset($_SESSION["a"])){
                     <i class="fas fa-edit fa-2x"></i>
                   </a>
                   <?php if($row->kategorija==0): ?>
-                    <a href="delete.php?sifra=<?php echo $row->sifra; ?>">
+                    <a onclick="return confirm('Sigurno obrisati <?php echo $row->ime; ?> <?php echo $row->prezime; ?>')" href="delete.php?sifra=<?php echo $row->sifra; ?>">
                       <i class="fas fa-trash fa-2x"></i>
                     </a>
                   <?php endif; ?>

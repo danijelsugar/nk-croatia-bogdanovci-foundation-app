@@ -44,7 +44,7 @@ if(!isset($_SESSION["a"])){
                 <a href="update.php?sifra=<?php echo $row->sifra; ?>">
                   <i class="fas fa-edit fa-2x"></i>
                 </a>
-                <a href="delete.php?sifra=<?php echo $row->sifra; ?>">
+                <a onclick="return confirm('Sigurno obrisati <?php echo $row->naziv; ?>')" href="delete.php?sifra=<?php echo $row->sifra; ?>">
                   <i class="fas fa-trash fa-2x"></i>
                 </a>
               </td>
