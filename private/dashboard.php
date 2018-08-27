@@ -31,10 +31,6 @@ if(!isset($_SESSION["a"])){
 		</div>
 	</div> 
 
-	
-
-	<?php //include_once "../template/footer.php"; ?>
-
 	<?php include_once "../template/scripts.php"; ?>
 </body>
 </html>
