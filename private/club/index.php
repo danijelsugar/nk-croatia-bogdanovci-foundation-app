@@ -18,10 +18,10 @@ if(!isset($_SESSION["a"])){
   $result = $query->fetchAll(PDO::FETCH_OBJ);
   ?>
 
+  <?php include_once "../../template/sidebar.php"; ?>
   <div class="grid-container full">
-    <div class="grid-x">
-     <?php include_once "../../template/sidebar.php"; ?>
-     <div class="cell large-10 medium-9">
+    <div class="grid-x align-center">
+     <div id="main" class="cell medium-10">
        <a href="new.php" class="button expanded">Dodaj novi klub</a>
        <table class="responsive-card-table unstriped">
         <thead>

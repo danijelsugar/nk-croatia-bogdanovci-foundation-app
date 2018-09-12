@@ -21,10 +21,10 @@ if(isset($_POST["dodaj"])){
 </head>
 <body>
 
+  <?php include_once "../../template/sidebar.php"; ?>
   <div class="grid-container full">
-    <div class="grid-x">
-      <?php include_once "../../template/sidebar.php"; ?>
-      <div class="cell large-10 medium-9">
+    <div class="grid-x align-center">
+      <div id="main" class="cell medium-10">
         <form class="callout text-center" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
           <div class="floated-label">
             <label for="naziv">Pozicija</label>
