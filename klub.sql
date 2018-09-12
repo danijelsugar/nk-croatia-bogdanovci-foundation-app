@@ -2,6 +2,8 @@ drop database if exists croatia;
 
 create database croatia default character set utf8;
 
+#sipanje baze
+#c:\xampp\mysql\bin\mysql -uedunova -pedunova --default_character_set=utf8 < E:\htdocs\nk_croatia_bogdanovci_app\croatia.sql
 
 use croatia;
 
@@ -48,9 +50,10 @@ igrac int not null
 create table utakmica(
 sifra int not null primary key auto_increment,
 naziv varchar(30) not null,
-datumodigravanja datetime not null,
 klub1 int not null,
-klub2 int not null
+klub2 int not null,
+datumodigravanja datetime not null,
+napomena varchar(200)
 );
 
 
@@ -91,3 +94,7 @@ insert into kategorija (sifra,naziv,trener,klub) values
 (null,'Seniori',1,1),
 (null,'Juniori',2,1),
 (null,'Pioniri',3,1);
+
+insert into utakmica (sifra,naziv,klub1,klub2,datumodigravanja,napomena) values 
+(null,'1. kolo',1,2,'2018-04-30','/'),
+(null,'1. kolo',3,4,'2018-04-30','/');
