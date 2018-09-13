@@ -10,7 +10,7 @@
 					<a href="" target="_blank"><i class="fab fa-twitter fa-2x"></i> Twitter</a>
 				</p>
 			</div>
-			<div class="cell large-6 text-right">
+			<div class="cell large-6">
 				<p>&copy; <?php echo date("Y") ?> Nk Croatia Bogdanovci-Danijel Šugar</p>
 			</div>
 		</div>

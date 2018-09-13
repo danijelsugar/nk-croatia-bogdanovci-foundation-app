@@ -1,4 +1,4 @@
-<div class="grid-x grid-padding-y">
+<div class="grid-x grid-padding-y hidden-for-small">
 	<div class="cell large-6 logo">
 		<img src="<?php echo $pathAPP; ?>/img/cro-grb.png" width="150px;" height="150px;" alt="">
 	</div>

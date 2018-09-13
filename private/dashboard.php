@@ -10,12 +10,11 @@ if(!isset($_SESSION["a"])){
 	<?php include_once "../template/head.php"; ?>
 </head>
 <body>
-	
+	<?php include_once "../template/sidebar.php" ?>
 	<div class="grid-container full">
-		<div class="grid-x">
-			<?php include_once "../template/sidebar.php" ?>
-			<div class="cell large-10 medium-7">
-				<div id="dashboard-main">
+		<div class="grid-x align-center">
+			<div class="cell large-10">
+				<div id="main">
 					<h1>Dashboard</h1>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus elit eu velit vestibulum dictum. Sed sollicitudin risus quis diam aliquet, quis eleifend nunc rhoncus. Aenean efficitur dapibus porttitor. Nunc accumsan, lacus a rutrum maximus, purus mi rhoncus velit, ac dapibus sem mauris a risus. Nam felis lectus, tristique vel purus a, egestas scelerisque metus. Vestibulum congue viverra mauris, in porttitor dolor. Sed venenatis, erat ut scelerisque fringilla, felis erat vehicula augue, ut finibus nunc mauris lobortis nisi. Phasellus venenatis varius rhoncus. Curabitur eget nunc sed metus volutpat fringilla in ut nisl. Nam malesuada aliquet felis, a porta nulla pellentesque in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi id sodales risus, quis congue mi. Pellentesque tincidunt velit porttitor dictum consectetur.
 
@@ -30,7 +29,7 @@ if(!isset($_SESSION["a"])){
 			</div>
 		</div>
 	</div> 
-
+	
 	<?php include_once "../template/scripts.php"; ?>
 </body>
 </html>

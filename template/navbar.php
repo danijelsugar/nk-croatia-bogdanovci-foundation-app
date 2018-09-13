@@ -14,9 +14,6 @@
 
       if(isset($_SESSION["a"])):
         menuItem($pathAPP, "private/dashboard.php", "Nadzorna ploča");
-        menuItem($pathAPP, "private/club/index.php", "Klubovi");
-        menuItem($pathAPP, "private/coach/index.php", "Treneri");
-        menuItem($pathAPP, "private/player/index.php", "Igrači");
       endif;
 
       if(isset($_SESSION["a"])): 

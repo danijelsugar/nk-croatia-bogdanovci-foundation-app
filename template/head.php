@@ -13,13 +13,13 @@
 <meta property="og:image:alt" content="Nk Croatia Bogdanovci logo"> 
 <meta property="og:description" content="Nk Croatia Bogdanovci is a small football club of rich history from the east of Croatia">
 <!-- FAVICON -->
-<link rel="shortcut icon" href="<?php echo $pathAPP; ?>/img/favicon.ico" type="image/x-icon">
-<link rel="icon" href="<?php echo $pathAPP; ?>/img/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="<?php echo $pathAPP; ?>img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="<?php echo $pathAPP; ?>img/favicon.ico" type="image/x-icon">
 <!-- FOUNDATION CSS -->
-<link rel="stylesheet" href="<?php echo $pathAPP; ?>/css/foundation.css">
+<link rel="stylesheet" href="<?php echo $pathAPP; ?>css/foundation.css">
 <!-- FONT AWESOME -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 <!-- RESPONSIVE TABLES CSS -->
-<link rel="stylesheet" href="<?php echo $pathAPP; ?>/css/responsive-tables.css">
+<link rel="stylesheet" href="<?php echo $pathAPP; ?>css/responsive-tables.css">
 <!-- CUSTOM CSS -->
-<link rel="stylesheet" href="<?php echo $pathAPP; ?>/css/app.css">
+<link rel="stylesheet" href="<?php echo $pathAPP; ?>css/app.css">

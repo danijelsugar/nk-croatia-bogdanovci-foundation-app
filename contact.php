@@ -38,7 +38,7 @@
         <h4>Opće informacije</h4>
         <ul class="contact-info">
           <li><strong>Web:</strong> <a href="#">www.koasd</a></li>
-          <li><strong>Facebook:</strong> <a href="https://www.facebook.com/nkcroatiabogdanovci1947/">https://www.facebook.com/nkcroatiabogdanovci1947</a></li>
+          <li><strong>Facebook:</strong> <a href="https://www.facebook.com/nkcroatiabogdanovci1947/">fb</a></li>
           <li><strong>Mail:</strong> croatia.bogdanovci@yahoo.com</li>
         </ul>
       </div>

@@ -10,7 +10,8 @@ if(!isset($_SESSION["a"])){
     inner join klub b
     on a.klub1=b.sifra
     inner join klub c
-    on a.klub2=c.sifra"
+    on a.klub2=c.sifra
+    order by naziv"
   );
   $query->execute();
   $result = $query->fetchAll(PDO::FETCH_OBJ);

@@ -38,7 +38,7 @@
    <?php include_once "template/navbar.php"; ?>
    <div class="grid-x grid-padding-y align-center">
     <div class="large-8 cell">
-      <form style="height: 100vh;" method="POST" action="authorize.php">
+      <form method="POST" action="authorize.php">
         <div class="form-icons">
           <h4>Login</h4>
 
@@ -56,17 +56,10 @@
             <input class="input-group-field" type="password" id="password" name="password" placeholder="a">
           </div>
         </div>
-
         <input class="button expanded" type="submit" value="Login">
       </form>
     </div>
-  </div>
-
-  <!-- / LOGIN FORM -->
-  <!-- ALERT -->
-
-  <div class="grid-x">
-    <div class="cell">
+    <div class="cell large-8">
       <?php if(isset($_GET["message"])){
         /*
             ==============================
@@ -100,9 +93,10 @@
         </div>
       </div>
     </div>
-    <!-- / ALERT -->
-    <?php include_once "template/footer.php"; ?>
 
-    <?php include_once "template/scripts.php"; ?>
-  </body>
-  </html>
+
+      <?php include_once "template/footer.php"; ?>
+
+      <?php include_once "template/scripts.php"; ?>
+    </body>
+    </html>

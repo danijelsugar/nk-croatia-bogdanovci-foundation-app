@@ -6,20 +6,16 @@
 </head>
 <body>
 
-
-  
   <div class="grid-container">
     <?php include_once "template/header.php" ?>
     <?php include_once "template/navbar.php"; ?>
     <div class="grid-x">
-      <div class="cell small-12 medium-12 large-12">
+      <div class="cell small-12 ">
         <div class="background-img">
 
         </div>
       </div>
     </div>
-
-
 
     <div class="grid-x">
       <div class="cell large-6">
