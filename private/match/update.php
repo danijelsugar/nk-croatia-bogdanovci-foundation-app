@@ -10,9 +10,9 @@ if(!isset($_GET["sifra"]) && !isset($_POST["sifra"])){
 
 $error = array();
 if(isset($_POST["promjeni"])){
-
+ 
   if(trim($_POST["naziv"])===""){
-    $error["naziv"] = "Obavezan unos";
+    $error["naziv"] = "Obavezan unos naziva (npr. 1.kolo, 2.kolo ...)";
   }
 
   if(strlen($_POST["naziv"])>50){
@@ -20,10 +20,10 @@ if(isset($_POST["promjeni"])){
   }
 
   if($_POST["domaci"]==="0"){
-    $error["domaci"] = "Obavezan odabir trenera";
+    $error["domaci"] = "Obavezan odabir";
   }else{
     $query = $connect->prepare("select count(sifra) from klub where sifra=:sifra");
-    $query->execute(array("sifra"=>$_POST["domaci"]));
+    $query->execute(array("sifra" => $_POST["domaci"]));
     $i = $query->fetchColumn();
     if($i==0){
       $error["domaci"] = "Mislis da si pametan, e pa nisi";
@@ -31,37 +31,50 @@ if(isset($_POST["promjeni"])){
   }
 
   if($_POST["gost"]==="0"){
-    $error["gost"] = "Obavezan odabir kluba";
+    $error["gost"] = "Obavezan odabir";
   }else{
     $query = $connect->prepare("select count(sifra) from klub where sifra=:sifra");
     $query->execute(array("sifra" => $_POST["gost"]));
     $i = $query->fetchColumn();
     if($i==0){
-      $error["gost"] = "Mislis da si pametan, e pa nisi";
+      $error["gost"] = "Misliš da si pametan, e pa nisi!";
     }
   }
 
+  if(empty($_POST["datumodigravanja"])){
+    $error["datumodigravanja"] = "Obavezan unos";
+  }
+
   if(count($error)===0){
-    $query = $connect->prepare("
-      update kategorija set 
-      naziv=:naziv, 
-      trener=:trener, 
-      klub=:klub
-      where sifra=:sifra");
-    $query->bindParam(":sifra",$_POST["sifra"]);
-    $query->bindParam(":naziv",$_POST["naziv"]);
-    $query->bindParam(":trener",$_POST["trener"]);
-    $query->bindParam(":klub",$_POST["klub"]);
+    $query = $connect->prepare("update utakmica set 
+                      naziv=:naziv,
+                      klub1=:domaci,
+                      klub2=:gost,
+                      datumodigravanja=:datumodigravanja,
+                      napomena=:napomena 
+                      where sifra=:sifra");
+    $query->bindParam("sifra",$_POST["sifra"]);
+    $query->bindParam("naziv",$_POST["naziv"]);
+    $query->bindParam("klub1",$_POST["domaci"]);
+    $query->bindParam("klub2",$_POST["gost"]);
+    $query->bindParam("datumodigravanja",$_POST["datumodigravanja"]);
+    if($_POST["napomena"]==""){
+      $query->bindValue(":napomena",null,PDO::PARAM_INT);
+    }else{
+      $query->bindParam("napomena",$_POST["napomena"]);
+    }
     $query->execute();
     header("location: index.php");
   }
 
 }else{
-    $query = $connect->prepare("select * from kategorija where sifra=:sifra");
+    $query = $connect->prepare("select * from utakmica where sifra=:sifra");
     $query->execute($_GET);
     $_POST = $query->fetch(PDO::FETCH_ASSOC);
   }
-
+print_r($_GET);
+echo "<br>";
+print_r($_POST);
 ?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
@@ -69,7 +82,7 @@ if(isset($_POST["promjeni"])){
   <?php include_once "../../template/head.php"; ?>
 
   <style>
-    .medium-6 {
+    .medium-4 {
       padding: 10px;
     }
   </style>
@@ -106,43 +119,48 @@ if(isset($_POST["promjeni"])){
           </div>
           
           <div class="grid-x">
-            <div class="cell medium-6">
-
-              <label  <?php if(isset($error["domaci"])){
-              echo ' class="is-invalid-label" ';
-              } ?> for="domaci">domaci</label>
-              <select <?php if(isset($error["domaci"])){
-              echo ' required="" class="is-invalid-input" data-invalid="" aria-invalid="true" ';
-              } ?> id="domaci" name="domaci">
-              <option value="0">Odaberi domaću ekipu</option>  
-              <?php 
+            <div class="cell medium-4">
               
-              $query = $connect->prepare("select * from klub order by naziv");
-              $query->execute();
-              $result = $query->fetchAll(PDO::FETCH_OBJ);
-               foreach($result as $row):?>
+              <label <?php if(isset($error["domaci"])){
+                echo ' class="is-invalid-label" ';
+              } ?> for="domaci">Domaci</label>
+                <select <?php if(isset($error["domaci"])){
+                  echo ' required="" class="is-invalid-input" data-invalid="" aria-invalid="true" ';
+                } ?> name="domaci" id="domaci">
+                  <option value="0">Odaberi domaću ekipu</option>
 
-               <option
-               <?php 
-               if(isset($_POST["domaci"]) && $_POST["domaci"]==$row->sifra){
-                 echo ' selected="selected" ';
-               }
-               ?>
-                value="<?php echo $row->sifra ?>"><?php echo $row->naziv ?></option>  
-              <?php endforeach;?>
-                
-                ?>
-              </select>
-              <?php if(isset($error["domaci"])): ?>
-              <span class="form-error is-visible" id="nazivGreska">
-                <?php echo $error["domaci"]; ?>
+                  <?php 
+
+                    $query = $connect->prepare("select * from klub order by naziv");
+                    $query->execute();
+                    $result = $query->fetchAll(PDO::FETCH_OBJ);
+                    foreach($result as $row): 
+                  ?>
+          
+                  <option
+                  <?php 
+
+                    if(isset($_POST["domaci"]) && $_POST["domaci"]==$row->sifra){
+                      echo ' selected="selected" ';
+                    }
+
+                  ?> 
+                    value="<?php echo $row->sifra; ?>"><?php echo $row->naziv; ?></option>
+
+                  <?php endforeach; ?>
+                </select>
+
+                <?php if(isset($error["domaci"])): ?>
+
+                <span class="form-error is-visible" id="nazivGreska">
+                  <?php echo $error["domaci"]; ?>
                 </span>
-                
-              <?php endif;?>
+
+              <?php endif; ?>
 
             </div>
 
-            <div class="cell medium-6">
+            <div class="cell medium-4">
 
               <label <?php if(isset($error["gost"])){
                 echo ' class="is-invalid-label" ';
@@ -181,7 +199,36 @@ if(isset($_POST["promjeni"])){
               <?php endif;?>
 
             </div>
+
+            <div class="cell medium-4">
+              <div class="floated-label">
+                <label <?php if(isset($error["datumodigravanja"])){
+                  echo ' class="is-invalid-label" ';
+                } ?> for="datumodigravanja">Datum odigravanja</label>
+                <input 
+                <?php if(isset($error["datumodigravanja"])){
+                  echo ' class="is-invalid-input" data-invalid="" aria-invalid="true" ';
+                } ?>
+                value="<?php echo isset($_POST["datumodigravanja"]) ? $_POST["datumodigravanja"] : "" ?>"
+                autocomplete="off" type="datetime-local"  id="datumodigravanja" name="datumodigravanja" >
+
+                <?php if(isset($error["datumodigravanja"])): ?>
+                <span class="form-error is-visible" id="nazivGreska">
+                <?php echo $error["datumodigravanja"]; ?>
+                </span>
+                <?php endif;?>
+
+              </div>
+            </div>
           </div>
+
+          <div class="floated-label">
+            <label for="napomena">Napomena</label>
+            <textarea name="napomena" id="napomena" cols="10" rows="10">
+              <?php echo isset($_POST["napomena"]) ? trim($_POST["napomena"]) : "" ?>
+            </textarea>
+          </div>
+
           <input type="hidden" name="sifra" value="<?php echo $_POST["sifra"]; ?>">
           <input class="button expanded" type="submit" name="promjeni" value="Promjeni">
           <a class="alert button expanded" href="index.php">Nazad</a>
