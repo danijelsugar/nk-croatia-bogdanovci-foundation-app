@@ -71,10 +71,15 @@ if(isset($_POST["promjeni"])){
     $query = $connect->prepare("select * from utakmica where sifra=:sifra");
     $query->execute($_GET);
     $_POST = $query->fetch(PDO::FETCH_ASSOC);
+    if(strlen($_POST["datumodigravanja"])>0){
+      $_POST["datumodigravanja"] = date("Y-m-d\TH:i:s",strtotime($_POST["datumodigravanja"]));
+    }
   }
 print_r($_GET);
 echo "<br>";
+echo "<pre>";
 print_r($_POST);
+echo "</pre>";
 ?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
@@ -123,7 +128,7 @@ print_r($_POST);
               
               <label <?php if(isset($error["domaci"])){
                 echo ' class="is-invalid-label" ';
-              } ?> for="domaci">Domaci</label>
+              } ?> for="domaci">Domaći</label>
                 <select <?php if(isset($error["domaci"])){
                   echo ' required="" class="is-invalid-input" data-invalid="" aria-invalid="true" ';
                 } ?> name="domaci" id="domaci">
