@@ -145,7 +145,7 @@ echo "</pre>";
                   <option
                   <?php 
 
-                    if(isset($_POST["domaci"]) && $_POST["domaci"]==$row->sifra){
+                    if(isset($_POST["klub1"]) && $_POST["klub1"]==$row->sifra){
                       echo ' selected="selected" ';
                     }
 
@@ -185,7 +185,7 @@ echo "</pre>";
                     <option
                     <?php 
 
-                      if(isset($_POST["gost"]) && $_POST["gost"]==$row->sifra){
+                      if(isset($_POST["klub2"]) && $_POST["klub2"]==$row->sifra){
                         echo ' selected="selected" ';
                       }
 

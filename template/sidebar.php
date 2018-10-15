@@ -18,7 +18,7 @@
   <a href="<?php echo $pathAPP; ?>private/player/index.php">Igrači</a>
   <a href="<?php echo $pathAPP; ?>private/category/index.php">Kategorija</a>
   <a href="<?php echo $pathAPP; ?>private/match/index.php">Rapored utakmica</a>
-  <a href="<?php echo $pathAPP; ?>logout.php">Logout</a>
+  <a href="<?php echo $pathAPP; ?>logout.php">Logout - <?php echo $_SESSION["a"]->ime; ?></a>
 </div>
 
   

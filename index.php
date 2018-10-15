@@ -6,7 +6,7 @@
 </head>
 <body>
 
-  <div class="grid-container">
+  <div class="grid-container full">
     <?php include_once "template/header.php" ?>
     <?php include_once "template/navbar.php"; ?>
     <div class="grid-x">
@@ -16,7 +16,8 @@
         </div>
       </div>
     </div>
-
+  </div>
+  <div class="grid-container">
     <div class="grid-x">
       <div class="cell large-6">
         <div class="" style="padding: 10px 15px;">

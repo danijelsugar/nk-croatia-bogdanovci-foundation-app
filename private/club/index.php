@@ -35,7 +35,7 @@ if(!isset($_SESSION["a"])){
         <tbody>
           <?php foreach($result as $row): ?>
             <tr>
-              <td data-label="Pozicija"><?php echo $row->pozicija; ?></td>
+              <td data-label="Pozicija"><?php echo $row->pozicija; ?>.</td>
               <td data-label="Naziv"><?php echo $row->naziv; ?></td>
               <td data-label="Broj bodova"><?php echo $row->brojbodova; ?></td>
               <td data-label="Zabijenih golova"><?php echo $row->zabijenihgolova; ?></td>

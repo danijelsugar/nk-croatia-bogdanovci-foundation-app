@@ -3,6 +3,33 @@ if(!isset($_SESSION["a"])){
   header("location: " . $pathAPP . "logout.php");
 }
 
+$page=1;
+if(isset($_GET["page"])){
+  $page=$_GET["page"];
+}
+
+$uvjet="";
+if(isset($_GET["uvjet"])){
+  $uvjet=$_GET["uvjet"];
+}
+
+
+$query = $connect->prepare("
+ 
+ select count(sifra) from igrac where concat(ime, ' ', prezime) like :uvjet;
+ ");
+
+$query->execute(array("uvjet"=>"%" . $uvjet . "%")); 
+$totalPlayers = $query->fetchColumn();
+$totalPages=ceil($totalPlayers/10);
+if($page>$totalPages){
+  $page=$totalPages;
+}
+if($page==0){
+  $page=1;
+}
+
+print_r($totalPlayers);
 ?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
@@ -17,9 +44,12 @@ if(!isset($_SESSION["a"])){
     a.brojtelefona,a.brojregistracije,
     count(b.igrac) as kategorija from
     igrac a left join kategorijaigrac b
-    on a.sifra=b.igrac group by a.sifra,
-    a.ime,a.prezime,a.oib,a.brojtelefona,
-    a.brojregistracije;");
+    on a.sifra=b.igrac
+    where concat(a.ime, ' ', a.prezime) like :uvjet  
+    group by a.sifra,a.ime,a.prezime,a.oib,a.brojtelefona, a.brojregistracije limit :page, 10
+    ");
+  $query->bindValue("page",($page*10) - 10,PDO::PARAM_INT);
+  $query->bindValue("uvjet","%" . $uvjet . "%");
   $query->execute();
   $result = $query->fetchAll(PDO::FETCH_OBJ);
   ?>
@@ -29,6 +59,10 @@ if(!isset($_SESSION["a"])){
     <div class="grid-x align-center">
       <div id="main" class="cell medium-10">
         <a href="new.php" class="button expanded">Dodaj igrača</a>
+        <form action="<?php echo $_SERVER["PHP_SELF"] ?>">
+          <input type="text" name="uvjet" value="<?php echo $uvjet; ?>">
+          <input type="submit" value="Traži" class="button expanded"/>
+        </form>
         <table style="border: 0;" class="responsive-card-table unstriped">
           <thead>
             <th>Ime</th>
@@ -60,6 +94,28 @@ if(!isset($_SESSION["a"])){
             <?php endforeach; ?>
           </tbody>
         </table>
+
+        <?php 
+          if($totalPages==0){
+            $totalPages=1;
+          }
+        ?>
+
+        <nav aria-label="Pagination">
+          <ul class="pagination text-center">
+            <li class="pagination-previous">
+              <a href="index.php?page=<?php echo $page-1; ?>&uvjet=<?php echo $uvjet; ?>" aria-label="Previous page">
+                Prethodno <span class="show-for-sr">page</span>
+              </a>
+            </li>
+            <li class="current"><span class="show-for-sr">Trenutno na</span> <?php echo $page; ?>/<?php echo $totalPages; ?></li>
+            <li class="pagination-next">
+              <a href="index.php?page=<?php echo $page+1; ?>&uvjet=<?php echo $uvjet; ?>" aria-label="Next page">
+                Sljedeće <span class="show-for-sr">page</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </div>
