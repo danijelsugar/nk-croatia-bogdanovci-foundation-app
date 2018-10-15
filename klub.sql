@@ -3,10 +3,18 @@ drop database if exists croatia;
 create database croatia default character set utf8;
 
 #sipanje baze
-#c:\xampp\mysql\bin\mysql -uedunova -pedunova --default_character_set=utf8 < E:\htdocs\nk_croatia_bogdanovci_app\croatia.sql
+#c:\xampp\mysql\bin\mysql -uedunova -pedunova --default_character_set=utf8 < E:\htdocs\nk_croatia_bogdanovci_app\Site\klub.sql
 
 use croatia;
 
+create table operater(
+sifra int not null primary key auto_increment,
+email varchar(50) not null,
+lozinka varchar(255) not null,
+ime varchar(50) not null,
+prezime varchar(50) not null,
+uloga varchar(50) not null
+);
 
 create table klub(
 sifra int not null primary key auto_increment,
@@ -98,3 +106,11 @@ insert into kategorija (sifra,naziv,trener,klub) values
 insert into utakmica (sifra,naziv,klub1,klub2,datumodigravanja,napomena) values 
 (null,'1. kolo',1,2,'2018-04-30','/'),
 (null,'1. kolo',3,4,'2018-04-30','/');
+
+insert into operater (email,lozinka,uloga,ime,prezime) values 
+('dsugar@gmail.com','$2y$12$sKX3yldMZhixSkEgeWQm4ObXqAejTIpcbAtYwU.eWjj1PywQzfenG',
+'admin','Danijel','Šugar'),
+('edunova@edunova.hr','$2y$12$rLkAxNcXn8dUY1C3MUYVV.qceDJcVbVYZu7El75qAqkCR.cMnuwRC',
+'korisnik','Pero','Perić');
+
+select 'Sve uspjesno odradeno' as poruka;
