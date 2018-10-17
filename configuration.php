@@ -20,20 +20,5 @@
 		    $connect = new PDO("mysql:host=sql304.byethost.com;port=3306;dbname=b16_21955356_croatia","b16_21955356","bogibatina13");
 	    break;
 }
-/*
-	==============================
-		Byet host
-	==============================
-*/
-/*
-	$connect = new PDO("mysql:host=sql304.byethost.com;port=3306;dbname=b16_21955356_croatia","b16_21955356","bogibatina13");
-	$connect->exec("set names utf8;");
-*/
-/*
-	==============================
-		Local host
-	==============================
-*/
-/*
-	$connect = new PDO("mysql:host=localhost;dbname=croatia","edunova","edunova");*/
+
 	$connect->exec("set names utf8;");

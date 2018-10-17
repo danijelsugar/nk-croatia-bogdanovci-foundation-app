@@ -7,7 +7,7 @@
 <body>
 
 
-  <div class="grid-container">
+  <div class="grid-container full">
     <?php include_once "template/header.php" ?>
     <?php include_once "template/navbar.php"; ?>
     <!-- GOOGLE MAPS -->
@@ -25,6 +25,8 @@
   			}
   		</script>
   	</div>
+  </div>
+  <div class="grid-container">
     <!-- / GOOGLE MAPS -->
     <!-- CONTACT INFO -->
     <div class="grid-x">
