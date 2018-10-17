@@ -33,34 +33,34 @@
 <body>
 
   <!-- LOGIN FORM -->
-  <div class="grid-container ">
-   <?php include_once "template/header.php" ?>
-   <?php include_once "template/navbar.php"; ?>
-   <div class="grid-x grid-padding-y align-center">
-    <div class="large-8 cell">
-      <form method="POST" action="authorize.php">
-        <div class="form-icons">
-          <h4>Login</h4>
+  <div class="grid-container full">
+    <?php include_once "template/header.php" ?>
+    <?php include_once "template/navbar.php"; ?>
+    <div class="grid-x grid-padding-y align-center">
+      <div class="large-8 cell">
+        <form method="POST" action="authorize.php">
+          <div class="form-icons">
+            <h4>Login</h4>
 
-          <div class="input-group">
-            <span class="input-group-label">
-              <i class="fa fa-user"></i>
-            </span>
-            <input class="input-group-field" type="text" id="user" name="user" placeholder="admin">
-          </div>
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-user"></i>
+              </span>
+              <input class="input-group-field" type="text" id="user" name="user" placeholder="admin">
+            </div>
 
-          <div class="input-group">
-            <span class="input-group-label">
-              <i class="fa fa-key"></i>
-            </span>
-            <input class="input-group-field" type="password" id="password" name="password" placeholder="a">
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-key"></i>
+              </span>
+              <input class="input-group-field" type="password" id="password" name="password" placeholder="a">
+            </div>
           </div>
-        </div>
-        <input class="button expanded" type="submit" value="Login">
-      </form>
-    </div>
-    <div class="cell large-8">
-      <?php if(isset($_GET["message"])){
+          <input class="button expanded" type="submit" value="Login">
+        </form>
+      </div>
+      <div class="cell large-8">
+        <?php if(isset($_GET["message"])){
         /*
             ==============================
               Checks for message and 
@@ -92,10 +92,17 @@
           ?>
         </div>
       </div>
+      <div class="grid-x grid-padding-y">
+        <div class="cell text-center">
+          <div class="copyright">
+            <p>&copy; <?php echo date("Y") ?> Nk Croatia Bogdanovci-Danijel Šugar</p>
+          </div>
+        </div>
+      </div>
     </div>
 
 
-      <?php include_once "template/footer.php"; ?>
+      
 
       <?php include_once "template/scripts.php"; ?>
     </body>
