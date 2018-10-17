@@ -36,7 +36,7 @@ if(!isset($_SESSION["a"])){
           <?php foreach($result as $row): ?>
             <tr>
               <td data-label="Pozicija"><?php echo $row->pozicija; ?>.</td>
-              <td data-label="Naziv"><?php echo $row->naziv; ?></td>
+              <td class="popup" id="cell_<?php echo $row->sifra; ?>" data-label="Naziv"><?php echo $row->naziv; ?></td>
               <td data-label="Broj bodova"><?php echo $row->brojbodova; ?></td>
               <td data-label="Zabijenih golova"><?php echo $row->zabijenihgolova; ?></td>
               <td data-label="Primljenih golova"><?php echo $row->primljenihgolova; ?></td>
@@ -54,9 +54,44 @@ if(!isset($_SESSION["a"])){
       </table>
     </div>
   </div>
+  <div class="reveal small" id="popisIgraca" data-reveal>
+    Poruka
+    <div>
+      
+    </div>
+    <button class="close-button" data-close aria-label="Zatvori" type="button">
+    <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 </div>
 
 
 <?php include_once "../../template/scripts.php"; ?>
+<script type="text/javascript">
+$(document).ready(function(){
+  var sifra;
+  $(".popup").click(function(){
+    sifra=$(this).attr("id").split("_")[1];
+    $('#popisIgraca').foundation("open");
+    return false;
+  });
+
+  $(".popup").click(function(){
+    $.ajax({
+      type: "POST",
+      url: "popisIgraca.php",
+      data: sifra,
+      success: function(vratioServer){
+        //console.log(vratioServer);
+        if (vratioServer==="OK"){
+          $('#saljiEmail').foundation("close");
+        }
+        
+      }
+    });
+    return false;
+  });
+});
+</script>
 </body>
 </html>

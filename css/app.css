@@ -22,6 +22,7 @@ footer a {
 /*NAVBAR*/
 .top-bar{
   justify-content: center;
+  height: 82px;
 }
 #main-menu > div {
   width: 100%;
@@ -31,7 +32,8 @@ footer a {
 .link{
   display: inline-block;
   padding: 7px 10px;
-  font-size: 18px;
+  font-size: 20px;
+  text-transform: uppercase;
   color: #0a393d;
   position: relative;
   transition: all 0.3s ease 0s;
@@ -86,7 +88,20 @@ footer a {
 
 /*FOOTER*/
 .footer-info {
+  padding: 0 40px;
   background: #20242D;
+}
+.module {
+  padding: 20px;
+}
+.module h2 {
+  font-size: 24px;
+  color: #fff;
+}
+.module p {
+  color: #fff;
+  line-height: 24px;
+  margin-bottom: 0.3rem;
 }
 /*LOGIN*/
 .alert-box {

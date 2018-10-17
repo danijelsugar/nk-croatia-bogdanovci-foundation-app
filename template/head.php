@@ -21,5 +21,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 <!-- RESPONSIVE TABLES CSS -->
 <link rel="stylesheet" href="<?php echo $pathAPP; ?>css/responsive-tables.css">
+<!-- DATETIME PICKER CSS -->
+<link rel="stylesheet" href="<?php echo $pathAPP; ?>css/jquery.datetimepicker.min.css">
 <!-- CUSTOM CSS -->
 <link rel="stylesheet" href="<?php echo $pathAPP; ?>css/app.css">

@@ -51,6 +51,7 @@ brojregistracije varchar(30) not null
 );
 
 create table kategorijaigrac(
+sifra int not null primary key auto_increment,
 kategorija int not null,
 igrac int not null
 );
@@ -106,6 +107,11 @@ insert into kategorija (sifra,naziv,trener,klub) values
 insert into utakmica (sifra,naziv,klub1,klub2,datumodigravanja,napomena) values 
 (null,'1. kolo',1,2,'2018-04-30','/'),
 (null,'1. kolo',3,4,'2018-04-30','/');
+
+insert into kategorijaigrac (kategorija,igrac) values 
+(1,1),
+(2,2),
+(3,4);
 
 insert into operater (email,lozinka,uloga,ime,prezime) values 
 ('dsugar@gmail.com','$2y$12$sKX3yldMZhixSkEgeWQm4ObXqAejTIpcbAtYwU.eWjj1PywQzfenG',

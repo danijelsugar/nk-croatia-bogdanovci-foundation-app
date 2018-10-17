@@ -180,7 +180,7 @@ print_r($_POST);
               <?php endif; ?>
 
             </div>
-
+            
             <div class="cell medium-4">
               <div class="floated-label">
                 <label <?php if(isset($error["datumodigravanja"])){
@@ -191,7 +191,7 @@ print_r($_POST);
                   echo ' class="is-invalid-input" data-invalid="" aria-invalid="true" ';
                 } ?>
                 value="<?php echo isset($_POST["datumodigravanja"]) ? $_POST["datumodigravanja"] : "Nije definirano" ?>"
-                autocomplete="off" type="datetime-local"  id="datumodigravanja" name="datumodigravanja" >
+                autocomplete="off" type="text"  id="datetimepicker" name="datumodigravanja" >
                 <?php if(isset($error["datumodigravanja"])): ?>
                 <span class="form-error is-visible" id="nazivGreska">
                 <?php echo $error["datumodigravanja"]; ?>

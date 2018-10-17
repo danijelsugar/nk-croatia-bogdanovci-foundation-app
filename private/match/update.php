@@ -46,25 +46,25 @@ if(isset($_POST["promjeni"])){
   }
 
   if(count($error)===0){
-    $query = $connect->prepare("update utakmica set 
+    $query = $connect->prepare("update utakmica set  
                       naziv=:naziv,
                       klub1=:domaci,
                       klub2=:gost,
                       datumodigravanja=:datumodigravanja,
-                      napomena=:napomena 
+                      napomena=:napomena   
                       where sifra=:sifra");
-    $query->bindParam("sifra",$_POST["sifra"]);
-    $query->bindParam("naziv",$_POST["naziv"]);
-    $query->bindParam("klub1",$_POST["domaci"]);
-    $query->bindParam("klub2",$_POST["gost"]);
-    $query->bindParam("datumodigravanja",$_POST["datumodigravanja"]);
+    $query->bindParam(":sifra",$_POST["sifra"]);
+    $query->bindParam(":naziv",$_POST["naziv"]);
+    $query->bindParam(":klub1",$_POST["domaci"]);
+    $query->bindParam(":klub2",$_POST["gost"]);
+    $query->bindParam(":datumodigravanja",$_POST["datumodigravanja"]);
     if($_POST["napomena"]==""){
-      $query->bindValue(":napomena",null,PDO::PARAM_INT);
+      $query->bindValue(":napomena",null,PDO::PARAM_STR);
     }else{
-      $query->bindParam("napomena",$_POST["napomena"]);
+      $query->bindParam(":napomena",$_POST["napomena"]);
     }
     $query->execute();
-    header("location: index.php");
+    //header("location: index.php");
   }
 
 }else{
@@ -215,7 +215,7 @@ echo "</pre>";
                   echo ' class="is-invalid-input" data-invalid="" aria-invalid="true" ';
                 } ?>
                 value="<?php echo isset($_POST["datumodigravanja"]) ? $_POST["datumodigravanja"] : "" ?>"
-                autocomplete="off" type="datetime-local"  id="datumodigravanja" name="datumodigravanja" >
+                autocomplete="off" type="text"  id="datetimepicker" name="datumodigravanja" >
 
                 <?php if(isset($error["datumodigravanja"])): ?>
                 <span class="form-error is-visible" id="nazivGreska">
@@ -229,9 +229,7 @@ echo "</pre>";
 
           <div class="floated-label">
             <label for="napomena">Napomena</label>
-            <textarea name="napomena" id="napomena" cols="10" rows="10">
-              <?php echo isset($_POST["napomena"]) ? trim($_POST["napomena"]) : "" ?>
-            </textarea>
+            <textarea name="napomena" id="napomena" cols="10" rows="10"><?php echo isset($_POST["napomena"]) ? trim($_POST["napomena"]) : "" ?></textarea>
           </div>
 
           <input type="hidden" name="sifra" value="<?php echo $_POST["sifra"]; ?>">
