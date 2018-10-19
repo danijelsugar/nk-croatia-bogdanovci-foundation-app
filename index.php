@@ -18,6 +18,44 @@
     </div>
   </div>
   <div class="grid-container">
+    <div class="grid-x counter">
+      <div class="cell large-4">
+        <div class="counter-box text-center">
+          <div class="counter-icon-img">
+            <img src="img/football.svg" alt="">
+          </div>
+          <div class="counter-txt">
+            <span class="count">Klubova</span>
+            <span class="type">12</span>
+          </div>
+        </div>
+      </div>
+      <div class="cell large-4 counter-box">
+        <div class="counter-icon-img">
+          <img src="img/football-player-setting-ball.svg" alt="">
+        </div>
+        <div class="counter-txt">
+          <span class="count">Igrača</span>
+          <span class="type">21</span>
+        </div>
+      </div>
+      <div class="cell large-4 counter-box">
+        <div class="counter-icon-img">
+          <img src="img/whistle.svg" alt="">
+        </div>
+        <div class="counter-txt">
+          <span class="count">Trenera</span>
+          <span class="type">1</span>
+        </div>
+      </div>
+    </div>
+    <div class="grid-x">
+      <div class="cell large-6 large-offset-3">
+        <p>Nogometni klub Croatia Bogdanovci osnovan je 1947. godine pod imenom NK Sremac. Od 1990. godine nosi sadašnji naziv.
+          U sezonama 1969/70., 1971/72. i 1982/83. klub osvaja prvenstvo nogometnog saveza područja Vukovara.
+          Klub je nekoliko sezona bio član 2. ŽNL, sezone 2012./13. i 2013./14. bio član 1. ŽNL Vukovarsko-srijemska. a trenutno se natječe u Međužupanijskoj nogometnoj ligi Osijek-Vinkovci.</p>
+      </div>
+    </div>
     <div class="grid-x">
       <div class="cell large-6">
         <div class="" style="padding: 10px 15px;">

@@ -21,7 +21,7 @@
 					<hr>
 					<p>
 						<a href="https://github.com/danijelsugar/nk-croatia-bogdanovci-foundation-app" target="_blank">
-							<i class="fab fa-github fa-2x"></i> GitHub Code
+							<i class="fab fa-github"></i> GitHub Code
 						</a>
 					</p>
 					<p>

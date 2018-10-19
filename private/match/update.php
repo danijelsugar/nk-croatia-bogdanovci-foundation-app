@@ -45,11 +45,17 @@ if(isset($_POST["promjeni"])){
     $error["datumodigravanja"] = "Obavezan unos";
   }
 
+  if($date1) {
+    $date1 = date( 'Y-m-d/TH:i:s', strtotime($date1));
+  } else {
+    $date1 = '';
+  }
+
   if(count($error)===0){
     $query = $connect->prepare("update utakmica set  
                       naziv=:naziv,
-                      klub1=:domaci,
-                      klub2=:gost,
+                      klub1=:klub1,
+                      klub2=:klub2,
                       datumodigravanja=:datumodigravanja,
                       napomena=:napomena   
                       where sifra=:sifra");
@@ -57,14 +63,14 @@ if(isset($_POST["promjeni"])){
     $query->bindParam(":naziv",$_POST["naziv"]);
     $query->bindParam(":klub1",$_POST["domaci"]);
     $query->bindParam(":klub2",$_POST["gost"]);
-    $query->bindParam(":datumodigravanja",$_POST["datumodigravanja"]);
+    $query->bindParam(":datumodigravanja",$date1);
     if($_POST["napomena"]==""){
       $query->bindValue(":napomena",null,PDO::PARAM_STR);
     }else{
       $query->bindParam(":napomena",$_POST["napomena"]);
     }
     $query->execute();
-    //header("location: index.php");
+    header("location: index.php");
   }
 
 }else{

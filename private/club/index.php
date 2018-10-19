@@ -55,10 +55,11 @@ if(!isset($_SESSION["a"])){
     </div>
   </div>
   <div class="reveal small" id="popisIgraca" data-reveal>
-    Poruka
-    <div>
-      
-    </div>
+    
+    Popis igraca
+
+   
+    
     <button class="close-button" data-close aria-label="Zatvori" type="button">
     <span aria-hidden="true">&times;</span>
     </button>
@@ -73,24 +74,20 @@ $(document).ready(function(){
   $(".popup").click(function(){
     sifra=$(this).attr("id").split("_")[1];
     $('#popisIgraca').foundation("open");
-    return false;
-  });
-
-  $(".popup").click(function(){
     $.ajax({
       type: "POST",
       url: "popisIgraca.php",
-      data: sifra,
-      success: function(vratioServer){
-        //console.log(vratioServer);
-        if (vratioServer==="OK"){
-          $('#saljiEmail').foundation("close");
-        }
-        
-      }
+      data: "sifra=" + sifra,
+      success: function(data){
+        $('#json').html(data);
+        console.log("sent");
+        var a = data;
+        console.log(a);
+    }
     });
     return false;
   });
+
 });
 </script>
 </body>
