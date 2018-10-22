@@ -40,13 +40,13 @@ if(isset($_POST["dodaj"])){
     $error["datumodigravanja"] = "Obavezan unos";
   }
 
-  $date1 = $_REQUEST['datumodigravanja'];
-
-  if($date1) {
-    $date1 = date( 'Y-m-d/TH:i:s', strtotime($date1));
-  } else {
-    $date1 = '';
-  }
+   $d=$_POST["datumodigravanja"];
+  //19.10.2018 19:37
+  $datumodigravanja = 
+  substr($d,6,4) . "-" . 
+  substr($d,3,2) . "-" . 
+  substr($d,0,2) . " " .
+  substr($d,11,5);
 
   if(count($error)===0){
     $query = $connect->prepare("insert into utakmica (naziv,klub1,klub2,datumodigravanja,napomena) values 
@@ -54,7 +54,7 @@ if(isset($_POST["dodaj"])){
     $query->bindParam(":naziv",$_POST["naziv"]);
     $query->bindParam(":klub1",$_POST["domaci"]);
     $query->bindParam(":klub2",$_POST["gost"]);
-    $query->bindParam(":datumodigravanja",$date1);
+    $query->bindParam(":datumodigravanja",$datumodigravanja);
     if($_POST["napomena"]==""){
       $query->bindValue(":napomena",null,PDO::PARAM_INT);
     }else{
@@ -225,5 +225,29 @@ if(isset($_POST["dodaj"])){
   </div>
 
   <?php include_once "../../template/scripts.php"; ?>
+  <script src="<?php echo $pathAPP; ?>js/jquery.datetimepicker.full.min.js"></script>
+  <script>
+    
+    //DATETIME PICKER
+
+    jQuery.datetimepicker.setLocale('hr');
+
+    jQuery('#datetimepicker').datetimepicker({
+      format:'d.m.Y H:i',
+      minDate:'-1970/01/02',
+      startDate:'+1971/05/01',
+      allowTimes:[
+        '00:00', '00:30', '01:00', '01:30', '02:00', '02:30', 
+        '03:00', '03:30', '04:00', '04:30', '05:00', '05:30',
+        '06:00', '06:30', '07:00', '07:30', '08:00', '08:30',
+        '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
+        '12:00', '12:30', '13:00', '13:30', '14:00', '14:30',
+        '15:00', '15:30', '16:00', '16:30', '17:00', '17:30',
+        '18:00', '18:30', '19:00', '19:30', '20:00', '20:30',
+        '21:00', '21:30', '22:00', '22:30', '23:00', '23:30',
+       ]
+    });
+
+  </script>
 </body>
 </html>

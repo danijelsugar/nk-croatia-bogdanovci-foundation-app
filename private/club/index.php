@@ -57,6 +57,7 @@ if(!isset($_SESSION["a"])){
   <div class="reveal small" id="popisIgraca" data-reveal>
     
     Popis igraca
+    <div id="json"></div>
 
    
     
@@ -69,20 +70,47 @@ if(!isset($_SESSION["a"])){
 
 <?php include_once "../../template/scripts.php"; ?>
 <script type="text/javascript">
-$(document).ready(function(){
-  var sifra;
+$(document).unbind("click").on("click", function () {
+   var sifra;
   $(".popup").click(function(){
     sifra=$(this).attr("id").split("_")[1];
-    $('#popisIgraca').foundation("open");
+    
     $.ajax({
       type: "POST",
       url: "popisIgraca.php",
       data: "sifra=" + sifra,
       success: function(data){
-        $('#json').html(data);
-        console.log("sent");
-        var a = data;
-        console.log(a);
+
+        var niz = JSON.parse(data);
+        $.each(niz,function(kljuc,vrijednost){
+          $('#json').append(vrijednost.ime + "<br />");
+        });
+        
+       
+        $('#popisIgraca').foundation("open");
+    }
+    });
+    return false;
+  });     
+});
+$(document).ready(function(){
+  var sifra;
+  $(".popup").click(function(){
+    sifra=$(this).attr("id").split("_")[1];
+    
+    $.ajax({
+      type: "POST",
+      url: "popisIgraca.php",
+      data: "sifra=" + sifra,
+      success: function(data){
+
+        var niz = JSON.parse(data);
+        $.each(niz,function(kljuc,vrijednost){
+          $('#json').append(vrijednost.ime + "<br />");
+        });
+        
+       
+        $('#popisIgraca').foundation("open");
     }
     });
     return false;

@@ -107,8 +107,12 @@ footer a {
 	width: 100%;
 	height: 100vh;
 }
+.standings {
+  padding: 40px 0;
+}
 .counter {
-  padding: 50px 0;
+  background-color: #20242D;
+  padding: 40px 0;
 }
 .counter-box div {
   width: 100px;

@@ -28,7 +28,8 @@ $mail->SMTPOptions = array(
     )
 );                                         
 
-$mail->setFrom($_POST["email"]);
+$posiljatelj = mb_encode_mimeheader("Edunova, Škola informatike","UTF-8");
+$mail->setFrom($_POST["email"], $posiljatelj);
 
 
 $mail->addAddress("edunovaw23@gmail.com", "Croatia bogdanovci");

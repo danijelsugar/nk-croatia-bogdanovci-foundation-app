@@ -18,6 +18,44 @@
     </div>
   </div>
   <div class="grid-container">
+    <div class="grid-x standings">
+      <?php
+        $query = $connect->prepare("select * from klub order by brojbodova desc;");
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_OBJ);
+      ?>
+      <table class="responsive-card-table unstriped">
+        <thead>
+          <th>Pozicija</th>
+          <th>Naziv</th>
+          <th>Broj Bodova</th>
+          <th>Zabijenih golova</th>
+          <th>Primljenih golova</th>
+          <th>Akcija</th>
+        </thead>
+        <tbody>
+          <?php foreach($result as $row): ?>
+            <tr>
+              <td data-label="Pozicija"><?php echo $row->pozicija; ?>.</td>
+              <td class="popup" id="cell_<?php echo $row->sifra; ?>" data-label="Naziv"><?php echo $row->naziv; ?></td>
+              <td data-label="Broj bodova"><?php echo $row->brojbodova; ?></td>
+              <td data-label="Zabijenih golova"><?php echo $row->zabijenihgolova; ?></td>
+              <td data-label="Primljenih golova"><?php echo $row->primljenihgolova; ?></td>
+              <td data-label="Akcija">
+                <a href="update.php?sifra=<?php echo $row->sifra; ?>">
+                  <i class="fas fa-edit fa-2x"></i>
+                </a>
+                <a onclick="return confirm('Sigurno obrisati <?php echo $row->naziv; ?>')" href="delete.php?sifra=<?php echo $row->sifra; ?>">
+                  <i class="fas fa-trash fa-2x"></i>
+                </a>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="grid-container full">
     <div class="grid-x counter">
       <div class="cell large-4">
         <div class="counter-box text-center">

@@ -45,7 +45,7 @@ if(!isset($_SESSION["a"])){
                 <td><?php echo $row->naziv ?></td>
                 <td><?php echo $row->domaci ?></td>
                 <td><?php echo $row->gost ?></td>
-                <td><?php echo ($row->datumodigravanja!=null) ? date("d.m.Y. H:i:s",strtotime($row->datumodigravanja)) : "Nije definirano "; ?></td>
+                <td><?php echo ($row->datumodigravanja!=null) ? date("d.m.Y. H:i",strtotime($row->datumodigravanja)) : "Nije definirano "; ?></td>
                 <td><?php echo $row->napomena ?></td>
                 <td>
                   <a href="update.php?sifra=<?php echo $row->sifra; ?>">
