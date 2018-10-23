@@ -15,7 +15,7 @@
       <div class="cell large-6">
         <div class="contact-text">
           <h1>Kontakti</h1>
-          <p class="blue">Nogometni klub Croatia Bogdanovci mozete kontaktirati svakim radnim danom, te na dan svake domaće utakmice.</p>
+          <p>Za sva pitanja kontaktirajte nas putem elektroničke pošte, telefonski ili na dan domaće utakmice biti će nam zadovoljstvo odgovoriti na svaki upit.</p>
           <p><strong>Nogometni klub Croatia Bogdanovci je amaterski sportski klub.</strong></p>
           <h4>Opće informacije</h4>
           <div class="info-details">

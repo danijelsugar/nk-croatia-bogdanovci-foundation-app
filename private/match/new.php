@@ -49,12 +49,19 @@ if(isset($_POST["dodaj"])){
   substr($d,11,5);
 
   if(count($error)===0){
-    $query = $connect->prepare("insert into utakmica (naziv,klub1,klub2,datumodigravanja,napomena) values 
-                              (:naziv,:klub1,:klub2,:datumodigravanja,:napomena)" );
+    $query = $connect->prepare("insert into utakmica (naziv,klub1,klub2,datumodigravanja,rezultat,napomena) values 
+                              (:naziv,:klub1,:klub2,:datumodigravanja,:rezultat,:napomena)" );
     $query->bindParam(":naziv",$_POST["naziv"]);
     $query->bindParam(":klub1",$_POST["domaci"]);
     $query->bindParam(":klub2",$_POST["gost"]);
     $query->bindParam(":datumodigravanja",$datumodigravanja);
+    
+    if($_POST["rezultat"]==""){
+      $query->bindValue(":rezultat",null,PDO::PARAM_INT);
+    }else{
+      $query->bindParam(":rezultat",$_POST["rezultat"]);
+    }
+
     if($_POST["napomena"]==""){
       $query->bindValue(":napomena",null,PDO::PARAM_INT);
     }else{
@@ -208,6 +215,27 @@ if(isset($_POST["dodaj"])){
                 <?php endif;?>
               </div>
             </div>
+          </div>
+
+          <div class="floated-label">
+
+            <?php if(!isset($error["rezultat"])): ?>
+
+            <label for="rezultat">Rezultat</label>
+            <input autocomplete="off" type="text" id="rezultat" name="rezultat" value="<?php echo isset($_POST["rezultat"]) ? $_POST["rezultat"] : "" ?>">
+
+            <?php else: ?>
+
+            <label class="is-invalid-label">
+              Zahtjevani unos
+              <input type="text" class="is-invalid-input" aria-describedby="nazivGreska" data-invalid="" 
+              aria-invalid="true" autocomplete="off" type="text" id="rezultat" name="rezultat">
+              <span class="form-error is-visible" id="nazivGreska">
+              <?php echo $error["rezultat"]; ?>
+              </span>
+            </label>
+
+            <?php endif; ?>
           </div>
           
           <div class="floated-label">

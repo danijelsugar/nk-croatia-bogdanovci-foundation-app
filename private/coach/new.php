@@ -51,7 +51,7 @@ if(isset($_POST["dodaj"])){
   }
 
 }
-print_r($_POST);
+
 ?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">

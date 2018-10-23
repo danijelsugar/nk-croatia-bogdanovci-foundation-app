@@ -48,7 +48,6 @@ if(isset($_POST["promjeni"])){
     $_POST = $query->fetch(PDO::FETCH_ASSOC);
   }
 
-  print_r($_POST);
 ?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">

@@ -38,6 +38,14 @@ footer a {
     color: #4c4c4c;
     margin-top: 5px;
 }
+@media screen and (max-width: 420px) {
+  .logo-title {
+    font-size: 24px;
+  }
+  .logo-sub {
+    font-size: 16px;
+  }
+}
 
 /*NAVBAR*/
 .top-bar{
@@ -107,16 +115,44 @@ footer a {
 	width: 100%;
 	height: 100vh;
 }
-.standings {
+.popup {
+  cursor: pointer;
+}
+.standings, .schedule {
   padding: 40px 0;
 }
-.counter {
+.counters {
   background-color: #20242D;
   padding: 40px 0;
 }
-.counter-box div {
-  width: 100px;
-  height: 100px;
+.counter-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
+.counter-box i {
+  color: #fff;
+  margin-bottom: 10px;
+}
+.counter-txt .count {
+  font-size: 36px;
+  line-height: 1;
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+}
+.counter-txt .type {
+  font-size: 18px;
+  color: #787878;
+  text-align: center;
+}
+.index-h2 {
+  text-align: center;
+}
+.about-club {
+  padding: 40px 15px;
 }
 
 /*FOOTER*/
@@ -298,5 +334,7 @@ footer a {
 .responsive-card-table td, .responsive-card-table th, .responsive-card-table tr {
   border: 0px;
 }
-
+.win-rate, .gd-rate {
+  padding: 40px 0;
+}
 

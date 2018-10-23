@@ -9,6 +9,7 @@
       <ul class="menu vertical medium-horizontal medium-text-center" data-responsive-menu="drilldown medium-dropdown">
         <?php
         menuItem($pathAPP, "index.php", "Naslovna");
+        menuItem($pathAPP, "schedule.php", "Raspored utakmica");
         menuItem($pathAPP, "contact.php", "Kontakt");
 
 

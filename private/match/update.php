@@ -59,6 +59,7 @@ if(isset($_POST["promjeni"])){
                       klub1=:klub1,
                       klub2=:klub2,
                       datumodigravanja=:datumodigravanja,
+                      rezultat=:rezultat,
                       napomena=:napomena   
                       where sifra=:sifra");
     $query->bindParam(":sifra",$_POST["sifra"]);
@@ -66,6 +67,13 @@ if(isset($_POST["promjeni"])){
     $query->bindParam(":klub1",$_POST["domaci"]);
     $query->bindParam(":klub2",$_POST["gost"]);
     $query->bindParam(":datumodigravanja",$datumodigravanja);
+
+    if($_POST["rezultat"]==""){
+      $query->bindValue(":rezultat",null,PDO::PARAM_STR);
+    }else{
+      $query->bindParam(":rezultat",$_POST["rezultat"]);
+    }
+
     if($_POST["napomena"]==""){
       $query->bindValue(":napomena",null,PDO::PARAM_STR);
     }else{
@@ -83,11 +91,6 @@ if(isset($_POST["promjeni"])){
       $_POST["datumodigravanja"] = date("d.m.Y H:i",strtotime($_POST["datumodigravanja"]));
     }
   }
-print_r($_GET);
-echo "<br>";
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
 ?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
@@ -233,6 +236,27 @@ echo "</pre>";
 
               </div>
             </div>
+          </div>
+
+          <div class="floated-label">
+
+            <?php if(!isset($error["rezultat"])): ?>
+
+            <label for="rezultat">Rezultat</label>
+            <input autocomplete="off" type="text" id="rezultat" name="rezultat" value="<?php echo isset($_POST["rezultat"]) ? $_POST["rezultat"] : "" ?>">
+
+            <?php else: ?>
+
+            <label class="is-invalid-label">
+              Zahtjevani unos
+              <input type="text" class="is-invalid-input" aria-describedby="nazivGreska" data-invalid="" 
+              aria-invalid="true" autocomplete="off" type="text" id="rezultat" name="rezultat">
+              <span class="form-error is-visible" id="nazivGreska">
+              <?php echo $error["rezultat"]; ?>
+              </span>
+            </label>
+
+            <?php endif; ?>
           </div>
 
           <div class="floated-label">

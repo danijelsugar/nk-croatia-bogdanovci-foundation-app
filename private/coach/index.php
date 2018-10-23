@@ -3,6 +3,7 @@ if(!isset($_SESSION["a"])){
   header("location: " . $pathAPP . "logout.php");
 }
 
+
 ?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">

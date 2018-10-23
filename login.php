@@ -46,14 +46,14 @@
               <span class="input-group-label">
                 <i class="fa fa-user"></i>
               </span>
-              <input class="input-group-field" type="text" id="user" name="user" placeholder="admin">
+              <input class="input-group-field" type="text" id="user" name="user" placeholder="edunova@edunova.hr">
             </div>
 
             <div class="input-group">
               <span class="input-group-label">
                 <i class="fa fa-key"></i>
               </span>
-              <input class="input-group-field" type="password" id="password" name="password" placeholder="a">
+              <input class="input-group-field" type="password" id="password" name="password" placeholder="e">
             </div>
           </div>
           <input class="button expanded" type="submit" value="Login">

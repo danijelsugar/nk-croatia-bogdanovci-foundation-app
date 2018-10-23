@@ -42,12 +42,39 @@ if(isset($_POST["promjeni"])){
       $error["brojRegistracije"] = "Registracija mora biti broj";
     }
 
+  if($_POST["klub"]==="0"){
+    $error["klub"] = "Obavezan odabir kluba";
+  }else{
+    $query = $connect->prepare("select count(sifra) from klub where sifra=:sifra");
+    $query->execute(array("sifra" => $_POST["klub"]));
+    $i = $query->fetchColumn();
+    if($i==0){
+      $error["klub"] = "Mislis da si pametan, e pa nisi";
+    }
+  }
+
+  if(!is_numeric($_POST["zutikartoni"])){
+    $error["zutikartoni"] = "Neispravan unos";
+  }
+
+  if(!is_numeric($_POST["crvenikartoni"])){
+    $error["crvenikartoni"] = "Neispravan unos";
+  }
+  if(!is_numeric($_POST["golovi"])){
+    $error["golovi"] = "Neispravan unos";
+  }
+
   if(count($error)===0){
-    $query = $connect->prepare("update igrac set ime=:ime,
+    $query = $connect->prepare("update igrac set 
+                            ime=:ime,
                             prezime=:prezime,
                             oib=:oib,
                             brojtelefona=:brojtelefona,
-                            brojregistracije=:brojregistracije where sifra=:sifra");
+                            brojregistracije=:brojregistracije,
+                            klub=:klub,
+                            zutikartoni=:zutikartoni,
+                            crvenikartoni=:crvenikartoni, 
+                            golovi=:golovi where sifra=:sifra");
   unset($_POST["promjeni"]);
   $query->execute($_POST);
   header("location: index.php");
@@ -59,7 +86,7 @@ if(isset($_POST["promjeni"])){
   $query->execute($_GET);
   $_POST = $query->fetch(PDO::FETCH_ASSOC);
 }
-print_r($_POST);
+
 ?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
@@ -187,6 +214,122 @@ print_r($_POST);
               aria-invalid="true" autocomplete="off" type="text" id="brojregistracije" name="brojregistracije">
               <span class="form-error is-visible" id="nazivGreska">
               <?php echo $error["brojRegistracije"]; ?>
+              </span>
+            </label>
+
+            <?php endif; ?>
+
+          </div>
+          <div class="grid-x">
+            <div class="cell medium-12">
+
+              <label <?php if(isset($error["klub"])){
+              echo ' class="is-invalid-label" ';
+              } ?> for="klub">Klub</label>
+              <select <?php if(isset($error["klub"])){
+              echo ' required="" class="is-invalid-input" data-invalid="" aria-invalid="true" ';
+               } ?> name="klub" id="klub">
+                <option value="0">Odaberi klub</option>
+
+                <?php 
+
+                  $query = $connect->prepare("select * from klub order by naziv");
+                  $query->execute();
+                  $result = $query->fetchAll(PDO::FETCH_OBJ);
+                  foreach($result as $row): 
+                ?>
+                
+                <option
+                <?php 
+
+                  if(isset($_POST["klub"]) && $_POST["klub"]==$row->sifra){
+                    echo ' selected="selected" ';
+                  }
+
+                ?>
+                 value="<?php echo $row->sifra; ?>"><?php echo $row->naziv; ?>
+                   
+                </option>
+
+                <?php endforeach; ?>
+              </select>
+
+              <?php if(isset($error["klub"])): ?>
+
+                <span class="form-error is-visible" id="nazivGreska">
+                  <?php echo $error["klub"]; ?>
+                </span>
+                  
+              <?php endif;?>
+
+            </div>
+          </div>
+          <div class="floated-label">
+
+            <?php if(!isset($error["zutikartoni"])): ?>
+
+            <label for="zutikartoni">Žuti kartoni</label>
+            <input autocomplete="off" type="number" min="0" max="100" id="zutikartoni" name="zutikartoni" 
+            value="<?php echo isset($_POST["zutikartoni"]) ? $_POST["zutikartoni"] : "" ?>">
+
+            <?php else: ?>
+
+            <label class="is-invalid-label">
+              Žuti kartoni
+              <input type="text"
+              value="<?php echo isset($_POST["zutikartoni"]) ? $_POST["zutikartoni"] : "" ?>" 
+              class="is-invalid-input" aria-describedby="nazivGreska" data-invalid="" 
+              aria-invalid="true" autocomplete="off" type="number" min="0" max="100" id="zutikartoni" name="zutikartoni">
+              <span class="form-error is-visible" id="nazivGreska">
+              <?php echo $error["zutikartoni"]; ?>
+              </span>
+            </label>
+
+            <?php endif; ?>
+
+          </div>
+          <div class="floated-label">
+
+            <?php if(!isset($error["crvenikartoni"])): ?>
+
+            <label for="crvenikartoni">Crveni kartoni</label>
+            <input autocomplete="off" type="number" min="0" max="100" id="crvenikartoni" name="crvenikartoni" 
+            value="<?php echo isset($_POST["crvenikartoni"]) ? $_POST["crvenikartoni"] : "" ?>">
+
+            <?php else: ?>
+
+            <label class="is-invalid-label">
+              Crveni kartoni
+              <input type="text"
+              value="<?php echo isset($_POST["crvenikartoni"]) ? $_POST["crvenikartoni"] : "" ?>" 
+              class="is-invalid-input" aria-describedby="nazivGreska" data-invalid="" 
+              aria-invalid="true" autocomplete="off" type="number" min="0" max="100" id="crvenikartoni" name="crvenikartoni">
+              <span class="form-error is-visible" id="nazivGreska">
+              <?php echo $error["crvenikartoni"]; ?>
+              </span>
+            </label>
+
+            <?php endif; ?>
+
+          </div>
+          <div class="floated-label">
+
+            <?php if(!isset($error["golovi"])): ?>
+
+            <label for="golovi">Golovi</label>
+            <input autocomplete="off" type="number" min="0" max="100" id="golovi" name="golovi" 
+            value="<?php echo isset($_POST["golovi"]) ? $_POST["golovi"] : "" ?>">
+
+            <?php else: ?>
+
+            <label class="is-invalid-label">
+              Golovi
+              <input type="text"
+              value="<?php echo isset($_POST["golovi"]) ? $_POST["golovi"] : "" ?>" 
+              class="is-invalid-input" aria-describedby="nazivGreska" data-invalid="" 
+              aria-invalid="true" autocomplete="off" type="number" min="0" max="100" id="golovi" name="golovi">
+              <span class="form-error is-visible" id="nazivGreska">
+              <?php echo $error["golovi"]; ?>
               </span>
             </label>
 
