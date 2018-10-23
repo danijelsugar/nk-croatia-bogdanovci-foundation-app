@@ -19,10 +19,12 @@ uloga varchar(50) not null
 create table klub(
 sifra int not null primary key auto_increment,
 naziv varchar(50) not null,
-pozicija int not null,
 brojbodova int not null,
 zabijenihgolova int not null,
-primljenihgolova int not null
+primljenihgolova int not null,
+pobjeda int not null,
+nerijesenih int not null,
+izgubljenih int not null
 );
 
 create table kategorija(
@@ -65,6 +67,7 @@ sifra int not null primary key auto_increment,
 naziv varchar(30) not null,
 klub1 int not null,
 klub2 int not null,
+rezultat varchar(200),
 datumodigravanja datetime not null,
 napomena varchar(200)
 );
@@ -82,11 +85,11 @@ alter table utakmica add foreign key (klub2) references klub(sifra);
 alter table igrac add foreign key (klub) references klub(sifra);
 
 
-insert into klub (sifra,naziv,pozicija,brojbodova,zabijenihgolova,primljenihgolova) values
-(null,'Croatia Bogdanovci',1,45,56,23),
-(null,'Mitnica',6,30,43,35),
-(null,'Trpinja',3,39,49,29),
-(null,'Negoslavci',2,42,60,27);
+insert into klub (sifra,naziv,brojbodova,zabijenihgolova,primljenihgolova) values
+(null,'Croatia Bogdanovci',45,56,23),
+(null,'Mitnica',30,43,35),
+(null,'Trpinja',39,49,29),
+(null,'Negoslavci',42,60,27);
 
 
 insert into igrac (sifra,ime,prezime,oib,brojtelefona,brojregistracije,klub,zutikartoni,crvenikartoni,golovi) values
@@ -109,9 +112,9 @@ insert into kategorija (sifra,naziv,trener,klub) values
 (null,'Pioniri',3,1);
 
 
-insert into utakmica (sifra,naziv,klub1,klub2,datumodigravanja,napomena) values 
-(null,'1. kolo',1,2,'2018-04-30',''),
-(null,'1. kolo',3,4,'2018-04-30','');
+insert into utakmica (sifra,naziv,klub1,klub2,rezultat,datumodigravanja,napomena) values 
+(null,'1. kolo',1,2,'2-1','2018-04-30',''),
+(null,'1. kolo',3,4,'2-1','2018-04-30','');
 
 
 insert into kategorijaigrac (kategorija,igrac) values 
